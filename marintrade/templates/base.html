@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Мой интернет-магазин</h1>
+        <h2>{{ array }}</h2>
+    </header>
+    
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Все права защищены</p>
+    </footer>
+</body>
+</html>
