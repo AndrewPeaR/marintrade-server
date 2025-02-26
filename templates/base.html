@@ -1,13 +1,15 @@
+{% load sass_tags %}
+
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{% sass_src 'sass/style.sass' %}" type="text/css">
+    
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <header>
-        <h1>Мой интернет-магазин</h1>
-        <h2>{{ array }}</h2>
-    </header>
+    
+    {% include 'marintrade/blocks/header.html' %}
     
     <main class="content">
         {% block content %}{% endblock %}
