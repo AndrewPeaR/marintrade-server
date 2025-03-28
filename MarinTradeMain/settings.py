@@ -53,12 +53,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'MarinTradeMain.urls'
 
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+# TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,12 +69,6 @@ TEMPLATES = [
             ],
         },
     },
-]
-
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'sass_processor.finders.CssFinder'
 ]
 
 WSGI_APPLICATION = 'MarinTradeMain.wsgi.application'
@@ -125,9 +119,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
-STATIC_ROOT = BASE_DIR / 'static'
+# Поправить потом urlсы для статик файлов
+STATIC_ROOT = (BASE_DIR / 'marintrade/static')
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder'
+]
+
+MEDIA_URL = 'media/'
+# Для дальнейшей доработки сайта проработать путь для медиа файлов!!!
+MEDIA_ROOT = (BASE_DIR / 'marintrade/media')
 
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 # Default primary key field type

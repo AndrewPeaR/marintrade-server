@@ -1,0 +1,124 @@
+{% load sass_tags %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Марин трейд</title>
+    <!-- <title>{% block title %}{% endblock %}</title> -->
+    <!-- <link rel="stylesheet" href="css/style.css" type="text/css" /> -->
+    <link rel="stylesheet" href="{% sass_src 'sass/style.sass' %}" type="text/css">
+    <link rel="icon" type="image/x-icon" href=" {% static 'favicon.ico' %}" />
+    <!-- OG Разметка -->
+    <meta name="description" content="Компания 'Марин трейд'">
+    <meta name="keywords" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <header class="header body-padding">
+        <ul class="header__items">
+          <a href="/" class="header__item">Марин трейд</a>
+          <nav class="header__item nav">
+            <ul class="nav__list">
+              <!-- TODO: Нормально прописать ховеры на шапке -->
+              <li class="nav__item"><a href="/">главная</a></li>
+              <li class="nav__item"><a href="/about">о компании</a></li>
+              <li class="nav__item"><a href="/vendors">наши вендоры</a></li>
+              <li class="nav__item"><a href="/contacts">контакты</a></li>
+            </ul>
+          </nav>
+          <button id="header__openform" class="header__item">написать нам</button>
+        </ul>
+      </header>
+    
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">    
+        <div class="wrapper footer__wrapper">
+          <ul class="footer__header">
+            <li>
+              <ul class="footer__nav">
+                <li class="footer__nav-item"><a href="#">Главная</a></li>
+                <li class="footer__nav-item"><a href="#">Описание</a></li>
+                <li class="footer__nav-item"><a href="#">Фото офиса</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="footer__nav">
+                <li class="footer__nav-item"><a href="#">О компании</a></li>
+                <li class="footer__nav-item"><a href="#">Описание</a></li>
+                <li class="footer__nav-item"><a href="#">Фото офиса</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="footer__nav">
+                <li class="footer__nav-item"><a href="#">Наши вендоры</a></li>
+                <li class="footer__nav-item"><a href="#">Вендоры</a></li>
+                <li class="footer__nav-item"><a href="#">Авторизованный партнер</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="footer__nav">
+                <li class="footer__nav-item"><a href="#">Контакты</a></li>
+                <li class="footer__nav-item"><a href="#">Карта</a></li>
+                <li class="footer__nav-item"><a href="#">Адрес</a></li>
+                <li class="footer__nav-item"><a href="#">График работы</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="footer__footer">
+            <div class="footer__contacts">
+              <p class="footer__address">Адрес: <a href="#">Москва, Киевское шоссе 3, стр.1, 117133 Бизнес-парк G10</a></p>
+              <p class="footer__phone">Телефон: <a href="#">8 (495) 222-50-03</a></p>
+              <p class="footer__email">Email: <a href="#">test@test.ru</a></p>
+              <p class="footer__copyright">© Все права защищены ООО "Marine Trade"</p>
+            </div>
+            <div class="footer__logo">
+              <img src="{% static 'img/main-banner.jpg' %}" alt="main-banner">
+            </div>
+          </div>
+        </div>
+      </footer>
+  
+      <div id="modalForm" class="modal-form">
+        <div class="modal-form__body">
+          <div class="modal-form__left">
+            <h3 class="modal-form__title">Обратная связь</h3>
+          </div>
+          <div class="modal-form__right">
+            <form action="#" class="modal-form__form">
+              <input type="text" class="modal-form__input" placeholder="Ваше имя" name="name">
+              <input type="text" class="modal-form__input" placeholder="Телефон" name="phone">
+              <input type="text" class="modal-form__input" placeholder="Почта" name="email">
+              <textarea class="modal-form__input modal-form__textarea" rows="3" name="message" placeholder="Ваше сообщение"></textarea>
+              <label class="modal-form__checkbox">
+                <input type="checkbox">
+                <div class="modal-form__checkbox-input"></div>
+                <span>Я солгласен с условиями <a href="#">политики конфедициальности</a></span>
+              </label>
+              <button type="submit" class="modal-form__submit">Отправить</button>
+            </form>
+            <button class="modal-form__close" id="closeModalForm"><img src="{% static 'img/close.svg' %}" alt="close"></button>
+          </div>
+        </div>
+      </div>
+  
+      <script src="{% static 'js/scripts.js' %}"></script>
+      <script src="{% static 'js/sliders.js' %}"></script>
+      {% block mapScript %}
+      {% endblock %}
+</body>
+</html>

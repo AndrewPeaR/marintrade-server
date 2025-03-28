@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section>
+  <div class="wrapper">
+    <div class="contacts">
+      <h2 class="contacts__title">Контакты</h2>
+      <p class="contacts__undertitle"><span>Наша задача</span>— позаботиться о вашем времени и подобрать лучшую технику для вас и вашего бизнеса</p>
+      <div class="contacts__address">
+        <h2 class="contacts__title">Головной офис</h2>
+        <p class="contacts__text">117133, Москва, 21-й км., Киевское шоссе 3, строение 1, Бизнес-парк G10</p>
+        <p class="contacts__text"><a href="tel:88009991122">8 (495) 222-50-03</a><br /><span>Время работы:</span> 9:00 - 19:00</p>
+        <p class="contacts__text"><span>Email:</span> <a href="mailto:test@email.ru">test@email.ru</a></p>
+        <div class="btn-wrapper">
+          <button class="btn" id="openModalForm">оставить заявку</button>
+        </div>
+      </div>
+      <div class="contacts__helpcenter">
+        <h2 class="contacts__title">Техподдержка</h2>
+        <p class="contacts__text"><span>Email:</span> <a href="mailto:test@email.ru">test@email.ru</a></p>
+        <p class="contacts__text"><span>Телефон:</span> <a href="tel:88009991122">8 (800) 999-11-22</a></p>
+      </div>
+      <div class="contacts__map">
+        <h2 class="contacts__title">Мы на карте</h2>
+        <div id="map" style="width: 100%; height: 600px"></div>
+      </div>
+      <img class="contacts__photo photo1" src="{% static 'img/contacts/contacts1.png' %}" alt="contacts1">
+      <img class="contacts__photo photo2" src="{% static 'img/contacts/contacts2.png' %}" alt="contacts2">
+      <img class="contacts__photo photo3" src="{% static 'img/contacts/contacts3.png' %}" alt="contacts3">
+      <img class="contacts__photo photo4" src="{% static 'img/contacts/contacts4.png' %}" alt="contacts4">
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block mapScript %}
+<script src="https://api-maps.yandex.ru/v3/?apikey=a8a171f0-1d76-426b-9c1f-c6c58d7df875&lang=ru_RU"></script>
+<script>
+  initMap();
+
+  async function initMap() {
+    // Промис `ymaps3.ready` будет зарезолвлен, когда загрузятся все компоненты основного модуля API
+    await ymaps3.ready;
+
+    const { YMap, YMapDefaultSchemeLayer } = ymaps3;
+
+    const map = new YMap(document.getElementById("map"), {
+      location: {
+        center: [37.600729, 55.720905],
+        zoom: 16.55,
+      },
+      behaviors: ['drag', 'pinchZoom', 'dblClick']
+    });
+    const { YMapDefaultMarker } = await ymaps3.import(
+      "@yandex/ymaps3-markers@0.0.1"
+    );
+
+    let marker = new YMapDefaultMarker({
+      coordinates: [37.600729, 55.720905],
+      draggable: false,
+      title: "Адрес: 119071, г. Москва",
+      subtitle: "Ленинский проспект, 15А",
+    });
+
+      map.addChild(new YMapDefaultSchemeLayer());
+      map.addChild(new ymaps3.YMapDefaultFeaturesLayer({ zIndex: 1800 }));
+      map.addChild(marker);
+  }
+</script>
+{% endblock %}

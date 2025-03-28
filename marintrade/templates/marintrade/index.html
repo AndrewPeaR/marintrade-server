@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<main class="main body-padding wrapper">
+    <div class="main__banner"></div>
+    <div class="main__description">
+      <h1 class="main__title">Дистрибуция серверного оборудования</h1>
+      <div class="main__subtitle">
+        <p class="main__text">
+          Мы подбираем лучшие технологии для вашего бизнеса и любимого дела
+          уже более 5 лет. Сопровождаем сделки от запроса клиента до готовых
+          сборок.
+        </p>
+        <a href="#" class="btn"
+          ><span class="btn__arrow"
+            ><img src="{% static 'img/btn-arrow.svg' %}" alt="btn-arrow" /></span
+          ><span class="btn__text">перейти в каталог</span></a
+        >
+      </div>
+    </div>
+</main>
+
+<section>
+<div class="wrapper">
+    <div class="actions">
+    <h2 class="section-title">Виды деятельности</h2>
+    <div class="actions__wrapper">
+        <div class="actions__item">
+        <img src="{% static 'img/actions1.svg' %}" alt="actions1">
+        <p>Поставка </br>IT-Оборудования</p>
+        </div>
+        <div class="actions__item">
+        <img src="{% static 'img/actions2.svg' %}" alt="actions2">
+        <p>Системная </br>интеграция</p>
+        </div>
+        <div class="actions__item">
+        <img src="{% static 'img/actions3.svg' %}" alt="actions3">
+        <p>Сервис</p>
+        </div>
+    </div>
+    </div>
+</div>
+</section>
+
+<section class="advantages">
+    <h2 class="advantages__title">Преимущества работы с нами</h2>
+    <div class="advantages__items">
+      <!-- <div class="advantages__item card">
+          <div class="card__pagination swiper-pagination"></div>
+          <div class="card__description">
+              <h3 class="card__title">Профессиональная команда</h3>
+              <p class="card__text">
+                  Не следует, однако, забывать, что начало повседневной работы по формированию позиции напрямую зависит от поэтапного и последовательного развития общества.
+              </p>
+          </div>
+      </div> -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <div class="advantages__item">
+                <img src="{% static 'img/advantages/advantages1.png' %}" alt="advantages1">
+                <div class="card">
+                  <div class="swiper-pagination card__pagination"></div>
+                  <div class="card__description">
+                    <h3 class="card__title">Профессиональная команда</h3>
+                    <p class="card__text">
+                      Не следует, однако, забывать, что начало повседневной работы по формированию позиции напрямую зависит от поэтапного и последовательного развития общества.
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="advantages__item">
+                <img src="{% static 'img/advantages/advantages2.png' %}" alt="advantages1">
+                <div class="card">
+                  <div class="swiper-pagination card__pagination"></div>
+                  <div class="card__description">
+                    <h3 class="card__title">Профессиональная команда</h3>
+                    <p class="card__text">
+                      Не следует, однако, забывать, что начало повседневной работы по формированию позиции напрямую зависит от поэтапного и последовательного развития общества.
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="advantages__item">
+                <img src="{% static 'img/advantages/advantages3.png' %}" alt="advantages1">
+                <div class="card">
+                  <div class="swiper-pagination card__pagination"></div>
+                  <div class="card__description">
+                    <h3 class="card__title">Профессиональная команда</h3>
+                    <p class="card__text">
+                      Не следует, однако, забывать, что начало повседневной работы по формированию позиции напрямую зависит от поэтапного и последовательного развития общества.
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="advantages__item">
+                <img src="{% static 'img/advantages/advantages4.png' %}" alt="advantages1">
+                <div class="card">
+                  <div class="swiper-pagination card__pagination"></div>
+                  <div class="card__description">
+                    <h3 class="card__title">Профессиональная команда</h3>
+                    <p class="card__text">
+                      Не следует, однако, забывать, что начало повседневной работы по формированию позиции напрямую зависит от поэтапного и последовательного развития общества.
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <!-- <div class="swiper-pagination card__pagination"></div> -->
+      </div>
+      <!-- <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div> -->
+    </div>
+  </section>
+{% endblock %}
