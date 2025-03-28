@@ -24,6 +24,7 @@
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
 </head>
 <body>
     <header class="header body-padding">
@@ -109,6 +110,12 @@
                 <div class="modal-form__checkbox-input"></div>
                 <span>Я солгласен с условиями <a href="#">политики конфедициальности</a></span>
               </label>
+              <div
+                    style="height: 100px; margin-top: 20px"
+                    id="captcha-container"
+                    class="smart-captcha"
+                    data-sitekey="ysc1_bLt1HCJIeeQIuEEPSlh8jii8T7oWcqx2Fgwyylbl5cc0517f"
+                ></div>
               <button type="submit" class="modal-form__submit">Отправить</button>
             </form>
             <button class="modal-form__close" id="closeModalForm"><img src="{% static 'img/close.svg' %}" alt="close"></button>

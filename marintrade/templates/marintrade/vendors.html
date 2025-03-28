@@ -2,5 +2,19 @@
 {% load static %}
 
 {% block content %}
-
+<section class="vendors">
+    <div class="wrapper">
+      <div class="vendors__wrapper">
+        <h2 class="vendors__title">Наши вендоры</h2>
+        <div class="vendors__items">
+            {% for item in vendors %}
+                <a href="vendors/{{ item.slug }}" class="vendors__item">
+                    <img src="{{ item.image.url }}" alt="huawei">
+                    <div class="vendors__hover-arrow"><img src="{% static 'img/vendors-arrow.svg' %}" alt="vendors-arrow"></div>
+                </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

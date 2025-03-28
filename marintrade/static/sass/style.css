@@ -135,7 +135,7 @@ legend {
   font-weight: 300;
   font-size: 26px;
   color: white;
-  padding: 9px 8px 9px 8px;
+  padding: 9px 8px;
   background-color: #1E1E1E;
   border-radius: 22px;
   display: flex;
@@ -159,6 +159,9 @@ legend {
     text-align: center;
     margin-top: -4px;
     flex: 1 1 100%; }
+
+.btn_padding {
+  padding: 15px 45px; }
 
 .burger {
   cursor: pointer;
@@ -365,7 +368,7 @@ legend {
 
 .vendors {
   background-color: #1E1E1E;
-  padding-top: 90px;
+  padding-top: 190px;
   padding-bottom: 140px; }
   .vendors__title {
     font-size: 64px;
@@ -490,6 +493,39 @@ legend {
       font-size: 26px;
       color: #1E1E1E; }
 
+.company {
+  padding-top: 190px;
+  margin-bottom: 120px; }
+  .company__image {
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 80px; }
+  .company__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 70px; }
+  .company__title {
+    font-size: 64px;
+    font-weight: 700; }
+  .company__tags {
+    display: flex;
+    align-items: center;
+    gap: 15px; }
+    .company__tags .company__tag {
+      padding: 14px 40px;
+      background-color: #1E1E1E;
+      border-radius: 15px;
+      color: #fff; }
+  .company__description {
+    text-align: justify;
+    font-weight: 500;
+    font-size: 32px;
+    color: #1E1E1E;
+    margin-bottom: 70px; }
+
 .modal-form {
   display: none;
   opacity: 0;
@@ -573,7 +609,11 @@ legend {
     background-color: white;
     padding: 15px 20px;
     border-radius: 10px;
-    font-size: 24px; }
+    font-size: 24px;
+    transition: all 0.20s ease-out; }
+    .modal-form__submit:hover {
+      color: #fff;
+      background-color: #137ED8; }
 
 @keyframes openModal {
   0% {
