@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+
+from tinymce.models import HTMLField
 # from django.conf import settings
 # from django.utils import timezone
 
@@ -35,3 +37,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Test(models.Model):
+    title = models.CharField(max_length=200)
+    exerpt = models.TextField(max_length=200)
+    content = HTMLField()
+
+    def __str__(self):
+        return self.title

@@ -25,12 +25,15 @@ SECRET_KEY = 'django-insecure-%w$58@)b3o=xg8571*4(8lk^5-)i$ev68xzp3q#lcu7=*rhi4=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['andrewpear-marintrade-server-477e.twc1.net']
+ALLOWED_HOSTS = ['andrewpear-marintrade-server-477e.twc1.net', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
+    'filebrowser',
+    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,5 +140,43 @@ MEDIA_ROOT = (BASE_DIR / 'marintrade/media')
 SASS_PROCESSOR_ROOT = STATIC_ROOT
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
+# Настойки для tinymce и fileBrowser
+TINYMCE_SPELLCHECKER = True
+TINYMCE_JS_URL = os.path.join("tinymce/tinymce.min.js")
+TINYMCE_JS_ROOT = os.path.join("tinymce")
+TINYMCE_COMPRESSOR = False
+
+FILEBROWSER_DIRECTORY = ''
+DIRECTORY = ''
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+TINYMCE_DEFAULT_CONFIG = {
+    "relative_urls": False,
+    "remove_script_host": False,
+    "convert_urls": True,
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'theme': 'silver',
+    'plugins': '''
+            textcolor save link image media preview codesample contextmenu
+            table code lists fullscreen  insertdatetime  nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks
+            visualchars code fullscreen autolink lists  charmap print  hr
+            anchor pagebreak
+            ''',
+    'toolbar1': '''
+            bold italic underline | fontselect,
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link image media | codesample |
+            ''',
+
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': True,
+    "language": "en_US",
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

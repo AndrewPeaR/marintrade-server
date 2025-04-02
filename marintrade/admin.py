@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Product, Company, CompanyTags
+from .models import Product, Company, CompanyTags, Test
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -23,3 +23,5 @@ class CompanyAdmin(admin.ModelAdmin):
     readonly_fields = ["preview"]
     def preview(self, obj):
         return mark_safe(f'<img src="{obj.image.url}" style="max-height: 100px;">')
+    
+admin.site.register(Test)
