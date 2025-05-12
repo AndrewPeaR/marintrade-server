@@ -46,7 +46,8 @@ class Product(models.Model):
 class ProductsBlock(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
-    products = models.ManyToManyField(Product)
+    # TODO: Нужно поменять связь на фореигн кей и развернуть
+    products = models.ManyToManyField(Product, blank=True)
     company = models.ForeignKey(Company, on_delete=models.DO_NOTHING, verbose_name='Компания')    
     
     class Meta:
@@ -69,3 +70,18 @@ class Portfolio(models.Model):
 
     def __str__(self):
         return self.title
+
+class Questions(models.Model):
+    name = models.CharField(max_length=65, verbose_name='Имя')
+    phoneNumber = models.CharField(max_length=20, verbose_name='Телефон')
+    email = models.CharField(max_length=50, verbose_name='E-mail')
+    question = models.TextField(verbose_name='Вопрос')
+    status = models.BooleanField(verbose_name='Обработан', default=False)
+    create_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Дата обработки', auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Заявки"
+
+    def __str__(self):
+        return self.name

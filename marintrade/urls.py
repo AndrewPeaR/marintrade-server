@@ -7,4 +7,5 @@ urlpatterns = [
     path('vendors', vendors, name='vendors'),
     path('vendors/<slug:company_slug>', company, name='company'),
     path('contacts', contacts, name='contacts'),
+    path('questions', questions, name='questions')
 ]
