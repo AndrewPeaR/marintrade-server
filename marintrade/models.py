@@ -32,16 +32,40 @@ class Company(models.Model):
         return self.name
 
 class Product(models.Model):
-    name = models.CharField(max_length=200)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание', null=True, blank=True)
+    image = models.ImageField(upload_to='products', verbose_name='Логотип компании', validators=[FileExtensionValidator(allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))], null=True, blank=True)
+    link = models.CharField(max_length=300, verbose_name='Ссылка при нажатии', null=True, blank=True)
+    
+    class Meta:
+        verbose_name_plural = "Товары"
 
     def __str__(self):
         return self.name
     
-class Test(models.Model):
-    title = models.CharField(max_length=200)
-    exerpt = models.TextField(max_length=200)
-    content = HTMLField()
+class ProductsBlock(models.Model):
+    title = models.CharField(max_length=100, verbose_name='Заголовок')
+    description = models.TextField(verbose_name='Описание', null=True, blank=True)
+    products = models.ManyToManyField(Product)
+    company = models.ForeignKey(Company, on_delete=models.DO_NOTHING, verbose_name='Компания')    
+    
+    class Meta:
+        verbose_name_plural = "Блоки с товарами"
+
+    def __str__(self):
+        return self.title
+    
+def path_portfolio(instance, filename):
+    return '/'.join(filter(None, ('portfolio', instance.title, filename)))
+
+class Portfolio(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    description = models.TextField(verbose_name='Описание', null=True, blank=True)
+    image = models.ImageField(upload_to=path_portfolio, verbose_name='Изображение', null=True, blank=True)
+    pdf = models.FileField(upload_to=path_portfolio, verbose_name='Документ', null=True, blank=True)
+    
+    class Meta:
+        verbose_name_plural = "Портфолио"
 
     def __str__(self):
         return self.title
