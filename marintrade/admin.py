@@ -39,7 +39,7 @@ class ProductsBlockAdmin(admin.ModelAdmin):
         return obj.company.name
     
     def get_products(self, obj):
-        return ", ".join([product.name for product in obj.products.all()])
+        return ", ".join([product.name for product in Product.filter(id = obj.id)])
     get_products.short_description = 'Товары'
     
 @admin.register(Portfolio)

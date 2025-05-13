@@ -16,13 +16,15 @@ def vendors(request):
     return render(request, 'marintrade/vendors.html', context)
 def company(request, company_slug):
     company = Company.objects.filter(slug=company_slug)[0]
+    # test = ProductsBlock.objects.filter(company__id = company.id)
+    # test = ProductsBlock.objects.raw('SELECT * FROM marintrade_productsblock INNER JOIN marintrade_products WHERE marintrade_productsblock.id == marintrade_products.')
     context = {
         'company': company,
-        'productsBlock': ProductsBlock.objects.filter(company__id = company.id),
+        # 'productsBlocks': test,
         'form': UserForm()
     }
     # test = Company.objects.filter(slug=company_slug).values()
-    print(ProductsBlock.objects.filter(company__id = company.id).values())
+    print(test)
     return render(request, 'marintrade/company.html', context)
 
 def contacts(request):

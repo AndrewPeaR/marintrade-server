@@ -30,24 +30,10 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
-
-class Product(models.Model):
-    name = models.CharField(max_length=200, verbose_name='Название')
-    description = models.TextField(verbose_name='Описание', null=True, blank=True)
-    image = models.ImageField(upload_to='products', verbose_name='Логотип компании', validators=[FileExtensionValidator(allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))], null=True, blank=True)
-    link = models.CharField(max_length=300, verbose_name='Ссылка при нажатии', null=True, blank=True)
-    
-    class Meta:
-        verbose_name_plural = "Товары"
-
-    def __str__(self):
-        return self.name
     
 class ProductsBlock(models.Model):
     title = models.CharField(max_length=100, verbose_name='Заголовок')
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
-    # TODO: Нужно поменять связь на фореигн кей и развернуть
-    products = models.ManyToManyField(Product, blank=True)
     company = models.ForeignKey(Company, on_delete=models.DO_NOTHING, verbose_name='Компания')    
     
     class Meta:
@@ -55,6 +41,19 @@ class ProductsBlock(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Product(models.Model):
+    name = models.CharField(max_length=200, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание', null=True, blank=True)
+    image = models.ImageField(upload_to='products', verbose_name='Логотип компании', validators=[FileExtensionValidator(allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))], null=True, blank=True)
+    link = models.CharField(max_length=300, verbose_name='Ссылка при нажатии', null=True, blank=True)
+    productsBlock = models.ForeignKey(ProductsBlock, blank=True, null=True, on_delete=models.DO_NOTHING)
+
+    class Meta:
+        verbose_name_plural = "Товары"
+
+    def __str__(self):
+        return self.name
     
 def path_portfolio(instance, filename):
     return '/'.join(filter(None, ('portfolio', instance.title, filename)))
