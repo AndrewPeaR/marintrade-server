@@ -40,14 +40,15 @@ class ProductsBlock(models.Model):
         verbose_name_plural = "Блоки с товарами"
 
     def __str__(self):
-        return self.title
+        return 'Компания: ' + self.company.name + ', Блок: ' + self.title
     
 class Product(models.Model):
     name = models.CharField(max_length=200, verbose_name='Название')
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
+    items = models.TextField(verbose_name='Продукты (указать через запятую)', null=True, blank=True)
     image = models.ImageField(upload_to='products', verbose_name='Логотип компании', validators=[FileExtensionValidator(allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))], null=True, blank=True)
     link = models.CharField(max_length=300, verbose_name='Ссылка при нажатии', null=True, blank=True)
-    productsBlock = models.ForeignKey(ProductsBlock, blank=True, null=True, on_delete=models.DO_NOTHING)
+    productsBlock = models.ForeignKey(ProductsBlock, blank=True, null=True, on_delete=models.DO_NOTHING, related_name='products')
 
     class Meta:
         verbose_name_plural = "Товары"

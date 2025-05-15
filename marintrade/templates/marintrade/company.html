@@ -29,19 +29,21 @@
                 </div>
             </div>
         </div>
-        {% for product in productsBlock %}
+        {% for productsBlock in productsBlocks %}
         <div class="products">
-            <h2 class="products__title">{{ product.title }}</h2>
+            <h2 class="products__title">{{ productsBlock.title }}</h2>
             <ul class="products__list">
-                {% for item in productsBlock.products %}
-                <li class="products__item">
-                    <h3 class="products__header">DEPO Storage 3000</h3>
-                    <p class="products__description">Сетевые системы хранения данных NAS и SAN, обладающие обширными возможностями конфигурирования и потенциалом для масштабирования, поддерживающие подключение по FC и ISCSI. Для реализации задач импортозамещения подходят модели сетевых хранилищ корпоративных данных на базе платформы ДЕПО отечественного производства.</p>
-                    <div class="products__shop">
-                        <hr>
-                        DEPO Storage 3536G2 | 3536G3
-                    </div>
-                </li>
+                {% for product in productsBlock.products.all %}
+                        <li class="products__item">
+                            <h3 class="products__header">{{product.name}}</h3>
+                            <p class="products__description">{{product.description}}</p>
+                            {% if product.items %}
+                            <div class="products__shop">
+                                <hr>
+                                {{ product.items }}
+                            </div>
+                            {% endif %}
+                        </li>
                 {% endfor %}
             </ul>
         </div>

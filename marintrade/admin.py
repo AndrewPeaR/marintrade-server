@@ -4,7 +4,7 @@ from .models import Product, Company, CompanyTags, ProductsBlock, Portfolio, Que
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "description", "link", "preview")
+    list_display = ("name", "description", "link", 'productsBlock', "preview")
     
     readonly_fields = ["preview"]
     def preview(self, obj):
@@ -39,7 +39,7 @@ class ProductsBlockAdmin(admin.ModelAdmin):
         return obj.company.name
     
     def get_products(self, obj):
-        return ", ".join([product.name for product in Product.filter(id = obj.id)])
+        return ", ".join([product.name for product in Product.objects.filter(productsBlock_id = obj.id)])
     get_products.short_description = 'Товары'
     
 @admin.register(Portfolio)
