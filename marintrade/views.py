@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-from .models import Company, Product, ProductsBlock
+from .models import Company, Product, ProductsBlock, Portfolio
 from .forms import UserForm, checkCaptcha
 
 def index(request):
     return render(request, 'marintrade/index.html', {'form': UserForm()})
 
 def about(request):
-    return render(request, 'marintrade/about.html', {'form': UserForm()})
+    portfolio = Portfolio.objects.all()
+    return render(request, 'marintrade/about.html', {'form': UserForm(), 'portfolio': portfolio})
 
 def vendors(request):
     context = {
@@ -14,6 +15,7 @@ def vendors(request):
         'form': UserForm()
     }
     return render(request, 'marintrade/vendors.html', context)
+
 def company(request, company_slug):
     company = Company.objects.filter(slug=company_slug)[0]
     productsBlocks = ProductsBlock.objects.filter(company_id = company.id)

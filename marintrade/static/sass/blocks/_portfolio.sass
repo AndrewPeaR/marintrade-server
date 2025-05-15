@@ -1,4 +1,6 @@
 .portfolio
+    margin-bottom: 100px
+    position: relative
     .section-title
         font-family: "Condensed", sans-serif
         font-size: 64px
@@ -9,7 +11,6 @@
         display: flex
         justify-content: space-between
         align-items: center
-        margin-bottom: 100px
         gap: 57px
     &-button-next, &-button-prev
         max-width: 62px
@@ -32,7 +33,7 @@
         justify-content: space-between
         gap: 90px
     &__info
-        max-width: 610px
+        flex-shrink: 2
     &__title
         text-transform: uppercase
         font-weight: 500
@@ -47,12 +48,15 @@
     &__image
         max-width: 420px
         width: 100%
-        // flex: 1 1 100%
+        flex: 1 1 100%
         img
             border-radius: 30px
             object-fit: cover
             width: 100%
             height: 100%
+    &__pagination
+        position: unset !important
+        text-align: unset !important
     .btn_portfolio
         display: flex
         justify-content: space-between

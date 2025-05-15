@@ -12,21 +12,29 @@
         border-radius: 7px
         padding: 22px 35px
         margin-bottom: 20px
+        color: $dark
+        @include transition
         &:nth-child(2n-1)
             background-color: #e9e9e9
+        &_hover:hover
+            background-color: $blue
+            color: $white
+            .products__shop hr
+                background-color: $white
+        a
+            color: inherit
     &__header
         font-size: 32px
         font-weight: 600
-        color: $dark
         margin-bottom: 30px
     &__description
         font-size: 20px
         margin-bottom: 34px
     &__shop
         font-size: 20px
-        color: $dark
         hr
             width: 52px
             height: 1px
             background-color: $dark
             margin-bottom: 12px
+            @include transition

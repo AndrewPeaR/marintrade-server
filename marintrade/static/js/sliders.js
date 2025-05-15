@@ -4,13 +4,14 @@ const swiper = new Swiper(".mySwiper", {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
-    loop: true,
+    // loop: true,
     autoplay: {
       delay: 3000,
     },
     slidesPerView: 3,
     pagination: {
       el: ".swiper-pagination",
+      clickable: true,
     },
     mousewheel: true,
     keyboard: true,
@@ -28,9 +29,10 @@ const swiper2 = new Swiper(".portfolio__swiper", {
     autoplay: {
       delay: 5000,
     },
-    // pagination: {
-    //   el: ".swiper-pagination",
-    // },
+    pagination: {
+      el: ".portfolio__pagination",
+      clickable: true,
+    },
     // mousewheel: true,
     keyboard: true,
   });

@@ -44,11 +44,14 @@ class ProductsBlockAdmin(admin.ModelAdmin):
     
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'preview', 'pdf')
+    list_display = ('title', 'description', 'date_publish', 'preview', 'pdf')
     
     readonly_fields = ["preview"]
     def preview(self, obj):
-        return mark_safe(f'<img src="{obj.image.url}" style="max-height: 100px;">')
+        if obj.image:
+            return mark_safe(f'<img src="{obj.image.url}" style="max-height: 100px;">')
+        else:
+            return 'No file'
 
 @admin.register(Questions)
 class QuestionsAdmin(admin.ModelAdmin):

@@ -64,6 +64,7 @@ class Portfolio(models.Model):
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
     image = models.ImageField(upload_to=path_portfolio, verbose_name='Изображение', null=True, blank=True)
     pdf = models.FileField(upload_to=path_portfolio, verbose_name='Документ', null=True, blank=True)
+    date_publish = models.DateField(verbose_name='Дата публикации', null=True, blank=True)
     
     class Meta:
         verbose_name_plural = "Портфолио"

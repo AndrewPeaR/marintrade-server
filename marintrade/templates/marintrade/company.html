@@ -34,14 +34,20 @@
             <h2 class="products__title">{{ productsBlock.title }}</h2>
             <ul class="products__list">
                 {% for product in productsBlock.products.all %}
-                        <li class="products__item">
-                            <h3 class="products__header">{{product.name}}</h3>
-                            <p class="products__description">{{product.description}}</p>
-                            {% if product.items %}
-                            <div class="products__shop">
-                                <hr>
-                                {{ product.items }}
-                            </div>
+                        <li class="products__item {% if product.link %}products__item_hover{% endif %}">
+                            {% if product.link %}
+                                <a href="{{ product.link }}" blank="_target">
+                            {% endif %}
+                                <h3 class="products__header">{{product.name}}</h3>
+                                <p class="products__description">{{product.description}}</p>
+                                {% if product.items %}
+                                    <div class="products__shop">
+                                        <hr>
+                                        {{ product.items }}
+                                    </div>
+                                {% endif %}
+                            {% if product.link %}
+                                </a>
                             {% endif %}
                         </li>
                 {% endfor %}
